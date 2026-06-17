@@ -1,4 +1,4 @@
-/* iad-theme/iad.js — V8 logo SVG */
+/* iad-theme/iad.js — V12 */
 
 (function () {
   "use strict";
@@ -27,8 +27,7 @@
     topbar.id = "iadTopbar";
     topbar.innerHTML = `
       <div class="iad-brand">
-        <img class="iad-logo-img" src="iad-theme/logo-iad.svg" alt="iad">
-        <div class="iad-brand-name">iad immobilier</div>
+        <img class="iad-logo-img" src="iad-theme/logo-iad-bleu.png" alt="iad immobilier">
       </div>
 
       <div class="iad-agent">
@@ -47,26 +46,26 @@
     bottombar.innerHTML = `
       <a class="iad-bottom-link" href="tel:${config.phone}">
         <span class="iad-bottom-icon">${icons.phone}</span>
-        <span><strong>${config.phoneDisplay}</strong><span>Appelez-moi</span></span>
+        <span><strong>${config.phoneDisplay}</strong><span>Appeler</span></span>
       </a>
 
       <div class="iad-bottom-separator"></div>
 
       <a class="iad-bottom-link" href="mailto:${config.email}">
         <span class="iad-bottom-icon">${icons.mail}</span>
-        <span><strong>${config.email}</strong><span>Écrivez-moi</span></span>
+        <span><strong>${config.email}</strong><span>Email</span></span>
       </a>
 
       <div class="iad-bottom-separator"></div>
 
       <a class="iad-bottom-link iad-bottom-site" href="${config.website}" target="_blank" rel="noopener">
         <span class="iad-bottom-icon">${icons.globe}</span>
-        <span><strong>${config.websiteDisplay}</strong><span>Visitez mon site IAD</span></span>
+        <span><strong>${config.websiteDisplay}</strong><span>Site IAD</span></span>
       </a>
 
       <div class="iad-bottom-spacer"></div>
 
-      <img class="iad-bottom-logo-img" src="iad-theme/logo-iad-white.svg" alt="iad">
+      <img class="iad-bottom-logo-img" src="iad-theme/logo-iad-blanc.png" alt="iad immobilier">
 
       <div class="iad-bottom-project">
         <strong>Un projet immobilier ?</strong>

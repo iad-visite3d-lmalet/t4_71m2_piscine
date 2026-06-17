@@ -1,35 +1,32 @@
-/* iad-theme/iad.css — V8
-   Logos SVG fournis :
-   - logo-iad.svg pour le bandeau haut ;
-   - logo-iad-white.svg pour le bandeau bas.
+/* iad-theme/iad.css — V12
+   Correctifs :
+   - ne redimensionne plus #pano : les hotspots/flèches Marzipano ne sont plus décalés ;
+   - bandeaux en position fixed : meilleure compatibilité mobile ;
+   - mobile : bandeau bas visible avec Appeler / Email / Site IAD.
 */
 
 :root {
   --iad-blue: #006b98;
   --iad-blue-light: #009fe3;
   --iad-dark: #062b3f;
-  --iad-top-height: 108px;
-  --iad-bottom-height: 86px;
+  --iad-top-height: 104px;
+  --iad-bottom-height: 82px;
 }
 
-body.iad-themed {
-  font-family: Arial, Helvetica, sans-serif;
-}
+body.iad-themed { font-family: Arial, Helvetica, sans-serif; }
 
 /* Bandeau haut */
 #iadTopbar {
-  position: absolute;
+  position: fixed;
   z-index: 99999;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   height: var(--iad-top-height);
   background: rgba(255,255,255,.97);
   color: var(--iad-dark);
   display: flex;
   align-items: center;
   gap: 26px;
-  padding: 14px 26px;
+  padding: 12px 28px;
   border-bottom: 1px solid rgba(0,0,0,.12);
   box-shadow: 0 4px 18px rgba(0,0,0,.16);
   box-sizing: border-box;
@@ -38,22 +35,20 @@ body.iad-themed {
 .iad-brand {
   display: flex;
   align-items: center;
-  gap: 18px;
-  min-width: 300px;
+  justify-content: flex-start;
+  width: 220px;
+  min-width: 220px;
+  height: 100%;
 }
 
 .iad-logo-img {
-  width: 82px;
-  height: auto;
+  height: 68px !important;
+  width: auto !important;
+  max-width: 180px !important;
+  max-height: 68px !important;
   display: block;
+  object-fit: contain;
   flex: 0 0 auto;
-}
-
-.iad-brand-name {
-  color: var(--iad-blue);
-  font-size: 26px;
-  line-height: 1;
-  font-weight: 900;
 }
 
 .iad-agent {
@@ -69,18 +64,12 @@ body.iad-themed {
   line-height: 1.2;
 }
 
-.iad-agent span {
-  color: #555;
-  font-size: 15px;
-}
-
-.iad-top-spacer {
-  flex: 1;
-}
+.iad-agent span { color: #555; font-size: 15px; }
+.iad-top-spacer { flex: 1; }
 
 .iad-phone-top {
   color: var(--iad-blue) !important;
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 500;
   white-space: nowrap;
   text-decoration: none;
@@ -92,9 +81,9 @@ body.iad-themed {
 .iad-button {
   background: var(--iad-blue);
   color: #fff !important;
-  padding: 14px 24px;
+  padding: 13px 22px;
   border-radius: 14px;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 600;
   white-space: nowrap;
   text-decoration: none;
@@ -104,33 +93,21 @@ body.iad-themed {
 }
 
 /* Icônes SVG */
-.iad-svg {
-  width: 23px;
-  height: 23px;
-  display: inline-block;
-  flex: 0 0 auto;
-}
-
-.iad-svg svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
+.iad-svg { width: 23px; height: 23px; display: inline-block; flex: 0 0 auto; }
+.iad-svg svg { width: 100%; height: 100%; display: block; }
 
 /* Bandeau bas */
 #iadBottombar {
-  position: absolute;
+  position: fixed;
   z-index: 99999;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  left: 0; right: 0; bottom: 0;
   height: var(--iad-bottom-height);
   background: linear-gradient(135deg, var(--iad-blue), var(--iad-dark));
   color: #fff;
   display: flex;
   align-items: center;
-  gap: 26px;
-  padding: 12px 34px;
+  gap: 24px;
+  padding: 10px 30px;
   box-shadow: 0 -4px 18px rgba(0,0,0,.22);
   box-sizing: border-box;
 }
@@ -142,13 +119,12 @@ body.iad-themed {
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 13px;
   min-width: max-content;
 }
 
 .iad-bottom-icon {
-  width: 42px;
-  height: 42px;
+  width: 40px; height: 40px;
   border: 2px solid rgba(255,255,255,.9);
   border-radius: 12px;
   display: inline-flex;
@@ -157,84 +133,40 @@ body.iad-themed {
   flex: 0 0 auto;
 }
 
-.iad-bottom-icon .iad-svg {
-  width: 24px;
-  height: 24px;
-}
-
-.iad-bottom-link strong {
-  display: block;
-  font-size: 16px;
-  font-weight: 700;
-}
-
-.iad-bottom-link span span {
-  display: block;
-  margin-top: 4px;
-  font-size: 13px;
-  opacity: .9;
-  font-weight: 400;
-}
-
-.iad-bottom-site strong {
-  max-width: 430px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.iad-bottom-separator {
-  height: 48px;
-  width: 1px;
-  background: rgba(255,255,255,.35);
-  flex: 0 0 auto;
-}
-
-.iad-bottom-spacer {
-  flex: 1;
-}
+.iad-bottom-icon .iad-svg { width: 23px; height: 23px; }
+.iad-bottom-link strong { display: block; font-size: 15px; font-weight: 700; }
+.iad-bottom-link span span { display: block; margin-top: 4px; font-size: 12px; opacity: .9; font-weight: 400; }
+.iad-bottom-site strong { max-width: 420px; overflow: hidden; text-overflow: ellipsis; }
+.iad-bottom-separator { height: 44px; width: 1px; background: rgba(255,255,255,.35); flex: 0 0 auto; }
+.iad-bottom-spacer { flex: 1; }
 
 .iad-bottom-logo-img {
-  width: 76px;
-  height: auto;
+  height: 52px !important;
+  width: auto !important;
+  max-width: 120px !important;
+  max-height: 52px !important;
   display: block;
+  object-fit: contain;
   flex: 0 0 auto;
 }
 
-.iad-bottom-project {
-  line-height: 1.25;
-  white-space: nowrap;
-}
-
-.iad-bottom-project strong {
-  display: block;
-  text-transform: uppercase;
-  font-size: 15px;
-}
-
-.iad-bottom-project span {
-  display: block;
-  font-size: 18px;
-  margin-top: 4px;
-}
+.iad-bottom-project { line-height: 1.25; white-space: nowrap; }
+.iad-bottom-project strong { display: block; text-transform: uppercase; font-size: 14px; }
+.iad-bottom-project span { display: block; font-size: 17px; margin-top: 4px; }
 
 .iad-bottom-button {
   color: #fff !important;
   border: 1px solid rgba(255,255,255,.85);
   border-radius: 12px;
-  padding: 10px 22px;
+  padding: 9px 20px;
   font-size: 15px;
   font-weight: 600;
   white-space: nowrap;
   text-decoration: none;
 }
 
-/* Décalage de Marzipano */
-body.iad-themed #pano {
-  top: var(--iad-top-height) !important;
-  bottom: var(--iad-bottom-height) !important;
-  height: auto !important;
-}
-
+/* Intégration Marzipano
+   Important : #pano n'est plus redimensionné, pour éviter le décalage des hotspots. */
 body.iad-themed #titleBar,
 body.iad-themed #autorotateToggle,
 body.iad-themed #fullscreenToggle,
@@ -244,74 +176,114 @@ body.iad-themed #sceneListToggle {
 
 body.iad-themed #sceneList {
   top: calc(var(--iad-top-height) + 40px) !important;
-  bottom: var(--iad-bottom-height) !important;
-  height: auto !important;
-  max-height: none !important;
+  max-height: calc(100vh - var(--iad-top-height) - var(--iad-bottom-height) - 40px) !important;
 }
 
-body.iad-themed .viewControlButton-1 { bottom: calc(var(--iad-bottom-height) + 90px) !important; }
-body.iad-themed .viewControlButton-2 { bottom: calc(var(--iad-bottom-height) + 10px) !important; }
-body.iad-themed .viewControlButton-3,
-body.iad-themed .viewControlButton-4 { bottom: calc(var(--iad-bottom-height) + 50px) !important; }
-body.iad-themed .viewControlButton-5 { bottom: calc(var(--iad-bottom-height) + 50px) !important; }
-body.iad-themed .viewControlButton-6 { bottom: calc(var(--iad-bottom-height) + 10px) !important; }
+/* On évite uniquement que les boutons natifs bas soient masqués, sans toucher aux hotspots. */
+body.iad-themed .viewControlButton-2,
+body.iad-themed .viewControlButton-5,
+body.iad-themed .viewControlButton-6 {
+  margin-bottom: var(--iad-bottom-height) !important;
+}
 
-/* Mobile */
-@media (max-width: 1120px), (max-height: 560px) {
-  :root {
-    --iad-top-height: 76px;
-    --iad-bottom-height: 66px;
-  }
+/* Mobile portrait */
+@media (max-width: 768px) {
+  :root { --iad-top-height: 70px; --iad-bottom-height: 64px; }
 
   #iadTopbar {
     height: var(--iad-top-height);
-    gap: 12px;
-    padding: 8px 12px;
+    gap: 10px;
+    padding: 8px 10px;
   }
 
-  .iad-logo-img {
-    width: 54px;
-  }
-
-  .iad-brand {
-    min-width: auto;
-  }
-
-  .iad-brand-name,
-  .iad-agent span,
-  .iad-phone-top,
-  .iad-bottom-link,
-  .iad-bottom-separator,
-  .iad-bottom-logo-img,
-  .iad-bottom-project {
-    display: none;
-  }
+  .iad-brand { width: auto; min-width: 70px; }
+  .iad-logo-img { height: 44px !important; max-height: 44px !important; max-width: 78px !important; }
 
   .iad-agent {
-    min-width: auto;
-    padding-left: 12px;
+    min-width: 0;
+    padding-left: 10px;
+    border-left: 1px solid #d2dce1;
+    flex: 1;
   }
 
-  .iad-agent strong {
-    font-size: 15px;
-  }
+  .iad-agent strong { font-size: 14px; line-height: 1.1; }
+  .iad-agent span { font-size: 11px; }
+  .iad-phone-top { display: none; }
 
   .iad-button {
-    margin-left: auto;
-    padding: 10px 14px;
-    font-size: 14px;
+    padding: 9px 11px;
+    font-size: 0;
+    border-radius: 12px;
+    gap: 0;
   }
+
+  .iad-button .iad-svg { width: 22px; height: 22px; }
 
   #iadBottombar {
     height: var(--iad-bottom-height);
-    padding: 8px 12px;
+    padding: 7px 9px;
+    gap: 8px;
+    justify-content: space-around;
   }
 
+  .iad-bottom-link {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+  }
+
+  .iad-bottom-icon { width: 32px; height: 32px; border-radius: 10px; }
+  .iad-bottom-icon .iad-svg { width: 18px; height: 18px; }
+  .iad-bottom-link strong { display: none; }
+  .iad-bottom-link span span { display: block; font-size: 10px; margin-top: 0; }
+
+  .iad-bottom-separator,
+  .iad-bottom-spacer,
+  .iad-bottom-logo-img,
+  .iad-bottom-project,
   .iad-bottom-button {
-    margin-left: auto;
+    display: none;
+  }
+
+  body.iad-themed #titleBar,
+  body.iad-themed #autorotateToggle,
+  body.iad-themed #fullscreenToggle,
+  body.iad-themed #sceneListToggle {
+    top: var(--iad-top-height) !important;
   }
 
   body.iad-themed #sceneList {
-    top: calc(var(--iad-top-height) + 50px) !important;
+    top: calc(var(--iad-top-height) + 40px) !important;
+    max-height: calc(100vh - var(--iad-top-height) - var(--iad-bottom-height) - 40px) !important;
+  }
+}
+
+/* Mobile paysage */
+@media (max-height: 560px) and (orientation: landscape) {
+  :root { --iad-top-height: 58px; --iad-bottom-height: 52px; }
+
+  #iadTopbar { height: var(--iad-top-height); padding: 6px 10px; }
+  .iad-logo-img { height: 36px !important; max-height: 36px !important; }
+  .iad-agent strong { font-size: 13px; }
+  .iad-agent span { display: none; }
+  .iad-phone-top { display: inline-flex; font-size: 15px; }
+  .iad-button { padding: 8px 12px; font-size: 13px; }
+
+  #iadBottombar { height: var(--iad-bottom-height); padding: 5px 9px; }
+
+  .iad-bottom-link { display: flex; }
+  .iad-bottom-icon { width: 30px; height: 30px; }
+  .iad-bottom-link strong { display: none; }
+  .iad-bottom-link span span { display: block; font-size: 10px; }
+
+  .iad-bottom-separator,
+  .iad-bottom-logo-img,
+  .iad-bottom-project,
+  .iad-bottom-button {
+    display: none;
   }
 }
